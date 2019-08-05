@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Gestão de Ferramentas</title>
+
+<!-- CSS -->
+<link href="bootstrap.min.css" rel="stylesheet">
+<link href="jquery.dataTables.min.css" rel="stylesheet">
+<link href="mycss.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div class="row mt-4">
+			<div class="col">
+				<h3>Gestão de Ferramentas</h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="card mt-4">
+					<div class="card-header">Ações</div>
+					<div class="card-body">
+						<button type="button" class="btn btn-dark" data-toggle="modal"
+							data-target="#modalAdicionarFerramenta">Adicionar Nova Ferramenta</button>
+						<button type="button" class="btn btn-dark" data-toggle="modal"
+							data-target="#modalRemoverFerramenta">Remover Ferramenta</button>
+						<!-- Modal Adicionar Nova Ferramenta-->
+						<div class="modal fade" id="modalAdicionarFerramenta" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalCenterTitle"
+							aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="tituloPopupAdicionar">Adicionar Nova Ferramenta</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="container-fluid">											
+											<div class="row">
+												<div class="col-12">
+													<div class="alert alert-warning fade show" role="alert" id="alertaAdicionarFerramenta">
+														Atenção! Todos os campos são obrigatórios.
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text"
+																id="inputGroup-sizing-default">Título</span>
+														</div>
+														<input type="text" id="tituloNovaFerramenta"
+															class="form-control">													
+													</div>
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-12">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text"
+																id="inputGroup-sizing-default">Link</span>
+														</div>
+														<input type="text" id="linkNovaFerramenta"
+															class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-12">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text"
+																id="inputGroup-sizing-default">Descrição</span>
+														</div>
+														<input type="text" id="descricaoNovaFerramenta"
+															class="form-control">
+													</div>
+												</div>
+											</div>
+											<div class="row mt-2">
+												<div class="col-12">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text"
+																id="inputGroup-sizing-default" class="btn btn-secondary">Tags</span>
+														</div>
+														<input type="text" id="tagsNovaFerramenta"
+															class="form-control" class="btn btn-secondary"
+															data-toggle="tooltip" data-placement="left"
+															title="As tags devem ser separadas por espaço. Ex: html css javascript">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-dark"
+											data-dismiss="modal">Cancelar</button>
+										<button type="button" class="btn btn-dark" id="botaoAdicionarNovaFerramenta">Adicionar</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- Modal Remover Ferramenta-->
+						<div class="modal fade" id="modalRemoverFerramenta" tabindex="-1"
+							role="dialog" aria-labelledby="exampleModalCenterTitle"
+							aria-hidden="true">
+							<div class="modal-dialog modal-dialog-centered" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<h5 class="modal-title" id="tituloPopupRemover">Remover Ferramenta</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<div class="modal-body">
+										<div class="container-fluid">											
+											<div class="row">
+												<div class="col-12">
+													<div class="alert alert-info fade show" role="alert" id="alertaRemoverFerramenta">
+														Favor informar o id da ferramenta a ser removida.
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-12">
+													<div class="input-group">
+														<div class="input-group-prepend">
+															<span class="input-group-text"
+																id="inputGroup-sizing-default">Id</span>
+														</div>
+														<input type="text" id="idFerramenta"
+															class="form-control">													
+													</div>
+												</div>
+											</div>																					
+										</div>
+									</div>
+									<div class="modal-footer">
+										<button type="button" class="btn btn-dark"
+											data-dismiss="modal">Cancelar</button>
+										<button type="button" class="btn btn-dark" id="botaoRemoverFerramenta">Remover</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="card mt-4">
+					<div class="card-header">Filtros de Busca</div>
+					<div class="card-body">
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="tipoFiltroBusca"
+								id="tipoFiltroTitulo" value="titulo" checked> 
+								<label class="form-check-label" for="tipoFiltroBusca"> Filtrar por Título</label>
+						</div>
+						<div class="form-check">
+							<input class="form-check-input" type="radio" name="tipoFiltroBusca"
+								id="tipoFiltroTag" value="tag"> 
+								<label class="form-check-label" for="tipoFiltroBusca"> Filtrar por Tag</label>
+						</div>
+						<div class="input-group mt-2">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="inputGroup-sizing-default">Valor</span>
+							</div>
+							<input type="text" id="valorFiltroBusca" class="form-control"
+								data-toggle="tooltip" data-placement="bottom"
+								title="Para buscar todos os registros deixe o campo em branco.">
+						</div>
+						<div class="mt-2 float-right">
+							<button type="button" class="btn btn-dark" id="botaoFiltrarFerramentas">Filtrar</button>						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				<div class="card mt-4">
+					<div class="card-header">Lista de Ferramentas</div>
+					<div class="card-body">
+						<table class="table table-striped table-bordered"
+							id="tabelaListaFerramentas" style="width: 100%">
+							<thead class="thead-dark">
+								<tr>
+									<th>Id</th>
+									<th>Título</th>
+									<th>Link</th>
+									<th>Descrição</th>
+									<th>Tags</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Scripts -->
+	<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="popper.min.js"></script>
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="myscript.js"></script>
+</body>
+</html>
